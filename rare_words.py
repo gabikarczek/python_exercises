@@ -6,3 +6,4 @@ def rare_n_words(text, n):
   words = text.split()
   c = Counter(words)
   return (c.most_common(n)[::-1])[:n]
+  
