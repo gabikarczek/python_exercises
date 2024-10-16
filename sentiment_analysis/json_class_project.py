@@ -13,9 +13,9 @@ with open('tweets.json', 'w') as file:
 with open('tweets.json', 'r') as file:
     data = json.load(file)
 
-positive_words = []
-negative_words = []
-neutral_words = []
+positive_comments = []
+negative_comments = []
+neutral_comments = []
 
 positive_patterns = [
     r"i?\s(lov(?:es|ed|e))\s?",
@@ -39,17 +39,17 @@ for tweet in data:
   tweet_content = tweet["text"]
   for positive_pattern in positive_patterns:
     if re.search(positive_pattern, tweet_content, re.IGNORECASE):
-      positive_words.append(tweet_content)
+      positive_comments.append(tweet_content)
       tweet['sentiment'] = "positive"
       break
   for negative_pattern in negative_patterns:
     if re.search(negative_pattern, tweet_content, re.IGNORECASE):
-      negative_words.append(tweet_content)
+      negative_comments.append(tweet_content)
       tweet['sentiment'] = "negative"
       break
   for neutral_pattern in neutral_patterns:
     if re.search(neutral_pattern, tweet_content, re.IGNORECASE):
-      neutral_words.append(tweet_content)
+      neutral_comments.append(tweet_content)
       tweet['sentiment'] = "neutral"
       break
 
